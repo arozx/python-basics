@@ -1,0 +1,48 @@
+import random as ran
+
+## generate random pin (4-16 digits)
+## each digit is individually generated then appended to the string **output**
+def GenUserPin():
+    digits=int(input("Enter number of digits:"))
+    while (digits < 4) or (digits > 16):
+        digits=int(input("Enter number of digits:"))
+    output=""
+    for x in range (digits):
+        genNumber=ran.randint(0,9)
+        output = output + str(genNumber)
+    print(output)
+
+## generate random string of letters (4-16)
+def GenUserLetters():
+    digits=int(input("Enter number of digits:"))
+    while (digits < 4) or (digits > 16):
+        digits=int(input("Enter number of digits:"))
+    output=""
+    for x in range (digits):
+        output=output+chr(ran.randint(ord('a'), ord('z')))
+    print(output)
+
+## generate random passphrase (4-16 digits) lowercase letters & numbers
+def GenUserMixed():
+    digits=int(input("Enter number of digits:"))
+    while (digits < 4) or (digits > 16):
+        digits=int(input("Enter number of digits:"))
+    output=""
+    repeats=ran.randint(0,digits)
+    for x in range (repeats):
+        GenNumber=ran.randint(0,9)
+        output=output+str(GenNumber)
+    for x in range (digits-repeats):
+        output=output+chr(ran.randint(ord('a'), ord('z')))
+    print(output)
+    
+## choose what function to run
+def GenType():
+    type=int(input("[1] All numbers [2] All letters [3] Numbers & letters:"))
+    if type==1:
+        GenUserPin()
+    if type==2:
+        GenUserLetters()
+    if type==3:
+        GenUserMixed()
+GenType()
